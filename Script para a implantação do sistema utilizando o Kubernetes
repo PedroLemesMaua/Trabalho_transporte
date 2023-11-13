@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edit-route
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: register-route
+  template:
+    metadata:
+      labels:
+        app: routes
+    spec:
+      containers:
+      - name: navigation
+        image: <nome_da_imagem>
+        ports:
+        - containerPort: 8080
