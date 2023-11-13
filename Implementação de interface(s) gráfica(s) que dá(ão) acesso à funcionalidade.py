@@ -57,3 +57,24 @@ describe('EditRouteComponent', () => {
     );
   }
 }
+
+
+#!/bin/bash
+
+# Obtém o nome do repositório
+repo_name=$(git remote get-url origin | sed -E 's/.*github.com\/(.*)\/.*/\1/')
+
+# Obtém o nome da release
+release_name=$(date +"%Y-%m-%d")
+
+# Cria a release
+git tag -a $release_name -m "Release $release_name"
+
+# Adiciona o código da interface gráfica
+git add ./frontend/src
+
+# Commita as alterações
+git commit -m "Adiciona a implementação da interface gráfica"
+
+# Pusha as alterações para o repositório
+git push origin $release_name
